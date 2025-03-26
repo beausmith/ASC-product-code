@@ -1,0 +1,49 @@
+Go to the ASC Discord channel if you have any questions about the changes - https://discord.gg/cB9P6NmYJg
+
+Ver 0.1.5 (notes, in progress)
+ - Change project name to correct name "AppliedSensorCo.SlumberTek"
+ - Default "Threshold Convergence Factor" is now 7
+ - Removal of "web_server:" as it was causing increased disconnects for people
+ - Added slider for changing the rate of threshold updates
+ - Added new way to improve "out of bed" thresholds that are slow because of slats or very soft mattresses
+ - Increase reset counter to 100
+ - Changed some icons to better match what they do and made "Bed Sensor" an occupancy sensor
+ - Started shifting towards the AppliedSensorCo owned Github product repo instead of one under my personal github
+
+Ver 0.1.4 (3/1/25)
+ - Added a little more detail to calibration button
+ - Shifted the calibration routine to be lower over all
+ - Calibrating clears the last 24hrs automatic threshold data
+ - Removed an 10 minute sensitivity increase if no event was detected on the sensor.
+ - Shifted threshold mid-point lower shift threshold mid-point value to 25% lower bottom of max difference gap, increase default Convergence factor to 7
+ - changed name to match new name product name: SlumberTek
+ - Change binary sensor name to "Bed Sensor" from "Mat Sensor"
+ 
+
+Ver 0.1.3 (hotfix - 2-17-25)
+ - When I added the "ssid: !secret wifi_ssid" and "password: !secret wifi_password" into the tt-sleep.factory.bin and tt-sleep.ota.bin it reset all the wifi credentials and without the credentials the device couldn't connect to ESPHome to get the Secret's information.
+ - Removed these from the .bin files but kept them in the online YAML so people could "take control" and be able to reconnect the device because "take control" also was removing the wifi credentials.
+
+Ver 0.1.2 (2-15-25)
+ - Added reboot_timeout to api (180s) and wifi (60s), to better catch which one is causing more issues.
+ - Changed the calibration routine so the lower threshold adjustment to be closer to the upper limit, helps to better capture "in bed" events after a calibration.
+ - Reduced the required change in "in bed" and "out of bed" signal from 50% of the current difference in the upper and lower thresholds to 25%. Hoping to catch more subtle changes in the signal over time. 
+ - Reduced some unneeded variables in the main signal logic loop: "previousIsOnState" and "IsOn" may have be causing an issue with not updating the binary sensor state correctly.
+ - Added secret wifi credentials into the wifi sections
+ - Moved "Sensitivity" slider into the diagnostic area of the device, renamed variable in YAML for clarity
+ - Renamed "24hr Dynamic Threshold reduction factor" to "Threshold Convergence Factor" so it was a little more clear-ish what it is.
+ - Threshold Convergence Factor is now adjustable and will update the thresholds immediately instead of waiting for the next dynamic threshold evaluation.
+
+Ver 0.1.1
+ - Change the default "Transition to On Delay" to 3 seconds, down from 5.
+ - Add a reset counter to tell when the device power cycles (trying to capture unintentional restarts), it counts to 5 and then the next restart is set back to 0.
+ - Added a wifi signal strength UI element
+ - Added a CPU internal temperature UI element 
+ - Removed all the extra debug logging, was worried it was causing connectivity issues sending to much in a short time period
+
+Ver 0.1.0
+ - Automatic update notifications and HTTP ota enabled
+ - Added several UI elements for people to tune to their desired accuracy and delay:
+    - "24hr Dynamic Threshold reduction factor" This changes how close together the daily dynamic thresholds will be, higher is closer together (6 is default)
+    - "Transition to on Delay" is the amount of time the sensor must be consecutively above the defined threshold before triggering the "on" state
+    - "Transition to off Delay" is the amount of time the sensor must be consecutively above the defined threshold before triggering the "off" state

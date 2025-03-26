@@ -1,0 +1,23 @@
+{
+  "name": "TrampleTek Blue Firmware",
+  "version": "0.1.2",
+  "home_assistant_domain": "esphome",
+  "new_install_skip_erase": false,
+  "builds": [
+    {
+      "chipFamily": "ESP32-C3",
+      "ota": {
+        "path": "https://raw.githubusercontent.com/ASCKing9/TrampleTek-Blue-code/main/ttb-mat.ota.bin",
+        "md5": "86e89bab9c03b17a1c69f40cb2dc0db8",
+        "summary": "Added several diagnostic entities. If you have 'taken control' of your mat and use OTA update, you may need to give your WiFi credentials through improv bluetooth, USB and https://web.esphome.io/, or the TTB fall back hotspot.",
+        "release_url": "https://github.com/ASCKing9/TrampleTek-Blue-code/blob/main/TrampleTekBlue_change_log.txt"                
+      },
+      "parts": [
+        {
+          "path": "https://raw.githubusercontent.com/ASCKing9/TrampleTek-Blue-code/main/ttb-mat.factory.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}
