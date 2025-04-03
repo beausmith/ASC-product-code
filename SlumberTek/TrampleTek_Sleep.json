@@ -1,6 +1,6 @@
 {
   "name": "SlumberTek Firmware",
-  "version": "0.1.4",
+  "version": "0.2.1",
   "home_assistant_domain": "esphome",
   "new_install_skip_erase": false,
   "builds": [
@@ -8,8 +8,8 @@
       "chipFamily": "ESP32-C3",
       "ota": {
         "path": "https://raw.githubusercontent.com/AppliedSensorCo/ASC-product-code/main/SlumberTek/slumbertek.ota.bin",
-        "md5": "23ff403db1dc1ab0bb6733b4d6e1d4c1",
-        "summary": "Name change to SlumberTek, binary sensor now called Bed Sensor (this will break existing automations), calibration UI and algorithm changes, calibrating button now clears the last 24hrs automatic threshold data.",
+        "md5": "7c4b396cbb6181c4d2122b01e72d0788",
+        "summary": "Quick-fix to revert changes to voltage calculations (will need to recalibrate, sorry!) IF YOU HAVEN'T UPDATED FROM 0.1.4, please send/export data FIRST, name changes will wipe old history and break automations. MQTT logging ON by default (can disable).",
         "release_url": "https://github.com/AppliedSensorCo/ASC-product-code/blob/main/SlumberTek/TrampleTekSleep_change_log.txt"        
       },
       "parts": [
