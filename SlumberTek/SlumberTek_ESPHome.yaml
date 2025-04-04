@@ -5,7 +5,7 @@ substitutions:
 esphome:
   name: ${name}
   friendly_name: ${friendly_name}
-  name_add_mac_suffix: false
+  name_add_mac_suffix: true
   project:
     name: AppliedSensorCo.SlumberTek
     version: 0.2.1
@@ -49,7 +49,7 @@ wifi:
 
 dashboard_import:
   package_import_url: 
-    github://ASCKing9/TrampleTek-Blue-code/TrampleTek_Debug/SleepMatBeta/TrampleTek_Sleep_ESPHome.yaml@main
+    github://AppliedSensorCo/ASC-product-code/SlumberTek/SlumberTek_ESPHome.yaml@main
   import_full_config: true
 
 improv_serial:
