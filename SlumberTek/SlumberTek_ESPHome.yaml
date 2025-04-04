@@ -34,7 +34,7 @@ update:
   id: update_http_request
   name: Firmware
   source: 
-    https://raw.githubusercontent.com/ASCKing9/TrampleTek-Blue-code/refs/heads/main/TrampleTek_Debug/SleepMatBeta/TrampleTek_Sleep.json
+    https://raw.githubusercontent.com/AppliedSensorCo/ASC-product-code/main/SlumberTek/SlumberTek.json
   update_interval: 6h
 
 http_request:
@@ -166,12 +166,12 @@ globals:
 - id: on_validation
   type: int
   restore_value: yes
-  initial_value: '3'
+  initial_value: '1'
 
 - id: off_validation
   type: int
   restore_value: yes
-  initial_value: '10'
+  initial_value: '3'
 
 - id: threshold_convergence_factor
   type: int
@@ -267,9 +267,9 @@ number:
   icon: mdi:progress-download
   unit_of_measurement: s
   update_interval: never
-  initial_value: 5
+  initial_value: 1
   min_value: 1
-  max_value: 30
+  max_value: 10
   step: 1
   optimistic: true
   restore_value: true
@@ -285,9 +285,9 @@ number:
   icon: mdi:progress-upload
   unit_of_measurement: s
   update_interval: never
-  initial_value: 10
+  initial_value: 3
   min_value: 1
-  max_value: 60
+  max_value: 20
   step: 1
   optimistic: true
   restore_value: true
@@ -582,7 +582,7 @@ interval:
         dynamicUpperThreshold = fixedUpperLimit;
       }
 
-      // Step 5: Update Lower dynamic threshold with Long-term adjustment if needed
+      // Step 5: Update Lower dynamic threshold
       dynamicLowerThreshold = 
       (thresholdSignal - dynamicThresholdOffset < fixedLowerLimit) ? fixedLowerLimit :
       (thresholdSignal - dynamicThresholdOffset > fixedUpperLimit) ? fixedUpperLimit :

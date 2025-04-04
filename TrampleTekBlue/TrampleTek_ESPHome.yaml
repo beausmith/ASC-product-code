@@ -72,7 +72,7 @@ esp32_improv:
   authorizer: none
 
 #### Step 11. Enables you to "visit" the device and see stats
-web_server:
+# web_server: // removed because it was causing periodic disconnects for some people
 
 #### Step 12. Enables the website at http://192.168.4.1/ if you need to connect to the fall back hotspot
 captive_portal:
@@ -174,7 +174,7 @@ number:
     unit_of_measurement: "V"
     update_interval: never
     min_value: 0.01
-    max_value: 1.0
+    max_value: 1.5
     step: 0.01
     optimistic: true
     on_value:
@@ -270,7 +270,7 @@ sensor:
 
 switch:
   - platform: template
-    name: "Calibration"
+    name: "Calibration (place your mat, turn on calibration, put your desired load on mat, turn off calibration - auto adjusts Sensitivity for you)"
     id: calibration_button
     optimistic: true
 
