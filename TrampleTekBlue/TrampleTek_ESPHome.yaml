@@ -39,11 +39,23 @@ api:
 #### Step 5. ota - the password isn't necessary, but does add security. You can keep or remove it. Adding the http_request will enable you to see and get new version updates
 ota:
   - platform: esphome
-    # password: "[your ota password here]"
+    # password: "[your ota password here]" # if you want one
   - platform: http_request
     id: ota_http_request
 
-#### Step 6. wifi - Added the lines about out_power and reboot_time. I usually erase the password backup hotspot because if you need it you'll probaly not remember it!
+#### Step 6. update - you'll need to add this section if you want to see update prompts in the future  
+update:
+  - platform: http_request
+    id: update_http_request
+    name: Firmware
+    source: https://raw.githubusercontent.com/AppliedSensorCo/ASC-product-code/main/TrampleTekBlue/TrampleTekBlue.json
+    update_interval: 6h
+
+#### Step 7. http_request - add this section as you'll need it to get updates in the futures
+http_request:
+  verify_ssl: false
+
+#### Step 8. wifi - Added the lines about out_power and reboot_time. I usually erase the password backup hotspot because if you need it you'll probaly not remember it!
 wifi:
   output_power: 8.5dB #!!!!!!!! MAKE SURE TO HAVE THIS LINE!!!!! It's known issue with Wemos Lolin c3 mini's that are in the mat
   reboot_timeout: 60s
@@ -52,17 +64,9 @@ wifi:
   ap:
     ssid: "TTBlue Fallback Hotspot"
 
-#### Step 7. update - you'll need to add this section if you want to see update prompts in the future  
-update:
-  - platform: http_request
-    id: update_http_request
-    name: Firmware
-    source: https://raw.githubusercontent.com/ASCKing9/TrampleTek-Blue-code/main/TrampleTekBlue.json
-    update_interval: 6h
 
-#### Step 8. http_request - add this section as you'll need it to get updates in the futures
-http_request:
-  verify_ssl: false
+
+
 
 #### Step 9. Enables wifi credentials over USB, if you need it
 improv_serial:
@@ -76,7 +80,6 @@ esp32_improv:
 
 #### Step 12. Enables the website at http://192.168.4.1/ if you need to connect to the fall back hotspot
 captive_portal:
-
 
 #### Step  13
 ### Below is the code that goes at the bottom of your YAML file, paste ALL code below this line to your YAML file.
@@ -173,8 +176,9 @@ number:
     device_class: "voltage"
     unit_of_measurement: "V"
     update_interval: never
+    initial_value: 0.05
     min_value: 0.01
-    max_value: 1.5
+    max_value: 2.0
     step: 0.01
     optimistic: true
     on_value:
