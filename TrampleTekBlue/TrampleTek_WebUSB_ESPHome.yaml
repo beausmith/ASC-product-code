@@ -43,7 +43,7 @@ update:
   - platform: http_request
     id: update_http_request
     name: Firmware
-    source: https://raw.githubusercontent.com/ASCKing9/TrampleTek-Blue-code/main/TrampleTekBlue.json
+    source: https://raw.githubusercontent.com/AppliedSensorCo/ASC-product-code/main/TrampleTekBlue/TrampleTekBlue.json
     update_interval: 6h
 
 http_request:
