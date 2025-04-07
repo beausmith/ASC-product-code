@@ -1,8 +1,8 @@
 Go to the ASC Discord channel if you have any questions about the changes - https://discord.gg/cB9P6NmYJg
 
 Ver 0.2.2 (notes, not released)
- - Keeping an eye on constraining the upper/lower dynamic thresholds, seems slightly broken
- - Reduce noise increase from using ADC sensor in signal, more averaging or filtering?
+ - Removed Bluetooth wifi provisioning, it was causing the install file to become too large
+ - I want to reduce noise increase from using ADC sensor in signal, more averaging or filtering?
  - Changed default On and Off delay to 1s and 3s, respectively.
  - Shifting links and https calls over to the AppliedSensorCo github
 

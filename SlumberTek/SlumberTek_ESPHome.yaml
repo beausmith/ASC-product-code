@@ -54,8 +54,8 @@ dashboard_import:
 
 improv_serial:
 
-esp32_improv:
-  authorizer: none
+# esp32_improv:
+#   authorizer: none # removed in 0.2.2 because it was bloating the size of the install file
 
 # web_server: # removed because it was casuing random device crashes randomly
 
