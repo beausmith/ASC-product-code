@@ -2,9 +2,9 @@ Go to the ASC Discord channel if you have any questions about the changes - http
 
 Ver 0.2.2 (notes, not released)
  - Removed Bluetooth wifi provisioning, it was causing the install file to become too large
- - I want to reduce noise increase from using ADC sensor in signal, more averaging or filtering?
  - Changed default On and Off delay to 1s and 3s, respectively.
  - Shifting links and https calls over to the AppliedSensorCo github
+ - Added a restart button into the diagnostic area for remote 
 
 Ver 0.2.1 (notes, not released)
  - Limited calibration publishing loop to 1 second to not spam MQTT service

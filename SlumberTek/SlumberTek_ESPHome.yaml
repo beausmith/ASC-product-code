@@ -8,7 +8,7 @@ esphome:
   name_add_mac_suffix: true
   project:
     name: AppliedSensorCo.SlumberTek
-    version: 0.2.1
+    version: 0.2.2
 
 esp32:
   board: esp32-c3-devkitm-1
@@ -451,6 +451,10 @@ switch:
       id(sensitive_mode) = false;
       id(sensitivity_number).publish_state(id(sensitivity_threshold_sen_false));
 
+button:
+- platform: restart
+  name: "SlumberTek Restart"
+  entity_category: diagnostic
 
 interval:
 - interval: 50ms
