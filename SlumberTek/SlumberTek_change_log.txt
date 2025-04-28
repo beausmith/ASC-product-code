@@ -1,12 +1,27 @@
 Go to the ASC Discord channel if you have any questions about the changes - https://discord.gg/cB9P6NmYJg
 
-Ver 0.2.2 (notes, not released)
+Ver 0.2.4 (in progress)
+ - Added filtering levels to help with people who have extra noisy signal
+ - Removed direct control over empty and full bed threshold, read only now
+ - Upper and lower dynamic thresholds sensitivities are independent (can also be turned off now)
+ - Amount of signal change required to trigger a auto-calibration is now tunable through a slider
+ - The auto-calibration is based on estimated target threshold, how that estimated target threshold is calculated is now adjustable through new sliders
+
+Ver 0.2.3 (release: 4/28/25)
+ - Added sensor text to explain when the auto-calibration will trigger
+ - Moved to mqtt.asc.com for the MQTT broker address
+ - Added auto-calibration slider for when auto-calibration happens (can also be turned off now)
+ - Add ID to reset button
+ - MQTT was retaining all messages sent by default, removed retain as default
+
+
+Ver 0.2.2 (release: 4/8/25)
  - Removed Bluetooth wifi provisioning, it was causing the install file to become too large
  - Changed default On and Off delay to 1s and 3s, respectively.
  - Shifting links and https calls over to the AppliedSensorCo github
  - Added a restart button into the diagnostic area for remote 
 
-Ver 0.2.1 (notes, not released)
+Ver 0.2.1 (release 4/2/25)
  - Limited calibration publishing loop to 1 second to not spam MQTT service
  - Added ADC sensor to "raw: true" to regain some lost dynamic voltage range
  - To reduce how often voltage publishes, voltage must change at least 0.004V

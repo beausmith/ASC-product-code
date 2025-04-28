@@ -1,6 +1,6 @@
 {
   "name": "SlumberTek Firmware",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "home_assistant_domain": "esphome",
   "new_install_skip_erase": false,
   "builds": [
@@ -8,8 +8,8 @@
       "chipFamily": "ESP32-C3",
       "ota": {
         "path": "https://raw.githubusercontent.com/AppliedSensorCo/ASC-product-code/main/SlumberTek/slumbertek.ota.bin",
-        "md5": "7f21f782db8e59d41356d8477f59dddb",
-        "summary": "IF YOU'RE UPDATING FROM 0.1.4 USING HA's OTA, YOU MUST DO A USB INSTALL via https://docs.asc.com/EasyModeInstall.html to cleanly upgrade to 0.2.x. Ver 0.2.2 adds reset button, removes BLE Wi-Fi provisioning.",
+        "md5": "87eb8031926d4a7134e850590b3d9db2",
+        "summary": "Added new auto-calibration text entity to show when next auto-calibration will happen, new auto-calibration interval slider (now can turn off if set to '0'), MQTT moved to mqtt.asc.com, disabled MQTT retaining messages.",
         "release_url": "https://github.com/AppliedSensorCo/ASC-product-code/blob/main/SlumberTek/SlumberTek_change_log.txt"        
       },
       "parts": [
