@@ -1,11 +1,12 @@
 Go to the ASC Discord channel if you have any questions about the changes - https://discord.gg/cB9P6NmYJg
 
 Ver 0.2.4 (in progress)
+ - Upper and lower threshold sensitivities, Removed the out of bed sensitivity mode
  - Added filtering levels to help with people who have extra noisy signal
- - Removed direct control over empty and full bed threshold, read only now
- - Upper and lower dynamic thresholds sensitivities are independent (can also be turned off now)
  - Amount of signal change required to trigger a auto-calibration is now tunable through a slider
+ - Fixed inconsistencies between using the phrase Upper and Lower instead of "empty bed" and "full bed", respectively
  - The auto-calibration is based on estimated target threshold, how that estimated target threshold is calculated is now adjustable through new sliders
+ - Removed direct control over empty and full bed threshold, now they are adjusted relative to the estimated midpoint from auto calibration
 
 Ver 0.2.3 (release: 4/28/25)
  - Added sensor text to explain when the auto-calibration will trigger

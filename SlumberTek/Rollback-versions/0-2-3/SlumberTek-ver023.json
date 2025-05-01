@@ -1,0 +1,17 @@
+{
+  "name": "SlumberTek Firmware (0.2.3 rollback)",
+  "version": "0.2.3",
+  "home_assistant_domain": "esphome",
+  "new_install_skip_erase": false,
+  "builds": [
+    {
+      "chipFamily": "ESP32-C3",
+      "parts": [
+        {
+          "path": "https://raw.githubusercontent.com/AppliedSensorCo/ASC-product-code/main/SlumberTek/Rollback-versions/0-2-3/slumbertek.factory-ver023.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}
