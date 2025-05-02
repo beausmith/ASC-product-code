@@ -1,3 +1,14 @@
+substitutions:
+  name: slumbertek
+  friendly_name: SlumberTek
+
+esphome:
+  name: ${name}
+  friendly_name: ${friendly_name}
+  name_add_mac_suffix: true
+  project:
+    name: AppliedSensorCo.SlumberTek
+    version: 0.3.0
 
 esp32:
   board: esp32-c3-devkitm-1
@@ -15,32 +26,32 @@ api:
 
 ota:
 - platform: esphome
-# - platform: http_request
-#   id: ota_http_request
+- platform: http_request
+  id: ota_http_request
 
-# update:
-# - platform: http_request
-#   id: update_http_request
-#   name: Firmware
-#   source: 
-#     https://raw.githubusercontent.com/AppliedSensorCo/ASC-product-code/main/SlumberTek/SlumberTek.json
-#   update_interval: 6h
-#   # retain: false
+update:
+- platform: http_request
+  id: update_http_request
+  name: Firmware
+  source: 
+    https://raw.githubusercontent.com/AppliedSensorCo/ASC-product-code/main/SlumberTek/SlumberTek.json
+  update_interval: 6h
+  retain: false
 
-# http_request:
+http_request:
 
 wifi:
   output_power: 8.5dB #!!!!!!!! MAKE SURE TO HAVE THIS LINE!!!!! It's known issue with Wemos Lolin c3 mini's
   reboot_timeout: 10s
-  ssid: !secret wifi_ssid # These are not part of the tt-sleep.factory.bin or tt-sleep.ota.bin, these are only added when you "take control" of the device
-  password: !secret wifi_password # These are not part of the tt-sleep.factory.bin or tt-sleep.ota.bin, these are only added when you "take control" of the device
+  # ssid: !secret wifi_ssid # These are not part of the tt-sleep.factory.bin or tt-sleep.ota.bin, these are only added when you "take control" of the device
+  # password: !secret wifi_password # These are not part of the tt-sleep.factory.bin or tt-sleep.ota.bin, these are only added when you "take control" of the device
   ap:
     ssid: SlumberTek Fallback Hotspot
 
-# dashboard_import:
-#   package_import_url: 
-#     github://AppliedSensorCo/ASC-product-code/SlumberTek/SlumberTek_ESPHome.yaml@main
-#   import_full_config: true
+dashboard_import:
+  package_import_url: 
+    github://AppliedSensorCo/ASC-product-code/SlumberTek/SlumberTek_ESPHome.yaml@main
+  import_full_config: true
 
 improv_serial:
 
@@ -51,43 +62,43 @@ improv_serial:
 
 captive_portal:
 
-# mqtt:
-#   # All MQTT publishes are anonymous, all that is sent is the $name (not the friendly name)
-#   # All pubs are defaultly SlumberTek-XXXXXX/number/ or SlumberTek-XXXXXX/sensor/ etc. where the XXXXXX is the last 6 digits of the ESP's MAC address
-#   # The  MQTT data goes to an AWS server and only ASC has creditentials to subscribe to the data.
-#   id: mqtt_client
-#   broker: mqtt.asc.com
-#   port: 8883
-#   discovery: false
-#   enable_on_boot: false
-#   reboot_timeout: 0s
-#   discovery_# retain: false
-#   log_topic:
-#   skip_cert_cn_check: true
-#   idf_send_async: false
-#   certificate_authority: |
-#     -----BEGIN CERTIFICATE-----
-#     MIIDtzCCAp+gAwIBAgIUFEakDzgjAXiPPIKqREM2ntBCrcQwDQYJKoZIhvcNAQEL
-#     BQAwajELMAkGA1UEBhMCVVMxEzARBgNVBAgMCldhc2hpbmd0b24xEDAOBgNVBAcM
-#     B1NlYXR0bGUxDDAKBgNVBAoMA0FTQzEQMA4GA1UECwwHTVFUVC1DQTEUMBIGA1UE
-#     AwwLQVNDIE1RVFQgQ0EwIBcNMjUwMzI2MDIxMTE1WhgPMjA1MjA4MTAwMjExMTVa
-#     MGoxCzAJBgNVBAYTAlVTMRMwEQYDVQQIDApXYXNoaW5ndG9uMRAwDgYDVQQHDAdT
-#     ZWF0dGxlMQwwCgYDVQQKDANBU0MxEDAOBgNVBAsMB01RVFQtQ0ExFDASBgNVBAMM
-#     C0FTQyBNUVRUIENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsOaq
-#     lRpFoOsNUHtSj/sxPtfnpK8JITcnJRd0KlOD6514g6fysgTNw4J+Aq3Vg6L67oGx
-#     wE9uxMe+DXBdSn3qb/QB+63t7OWIQNSB9NNorQUfvR7ZA3L9OpRD8I1+fhCDX7rm
-#     3U67VuJJYUdApOSOfliP0eSPxRA63yCIEflmDrnoHJHs7mw1gDdXCEEIg5qlrlKT
-#     GJes1WhurZpN/4Esyy2eqg5HMlRwpk1+LLkjkdsqFCQf2HUeApil0Dkr5BbRzUyH
-#     AcnQYPFCG6uLBTW004bEZ5llhlXMi/hgP50mpGns0Owc8DDssfDjHbVofZ53xe4T
-#     kmx7RHGAqAZA2lslbQIDAQABo1MwUTAdBgNVHQ4EFgQUr5X7FnXJkvzTdpdFiQw2
-#     eqFJl48wHwYDVR0jBBgwFoAUr5X7FnXJkvzTdpdFiQw2eqFJl48wDwYDVR0TAQH/
-#     BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAAlHuYRy08Wuaydn++xXKbYqbKJNY
-#     7c4EQzebNhtUF+SxU/z4tlo4ZNDbQiyudXLw7k0ajZ23JVO+NwwA5/CqNOZCqEfm
-#     ReTuQDRVsEan+0Us94aAVnfrBq2qk32r5GW+3PJFkeWghAzpys24c2YksMdayx8l
-#     89zBR4AYQhxumrTklXcVH4HyWsmWYdvyqtQroT/UmR3jWSj6gY3Bk7YgTUOwlo6z
-#     Mzzqbza1E8bawwUJlo1GGREjelMNrouZMqQPFGwjOPUbcVL6fV4LQmnD3KQNMazs
-#     SAwGtYIVanPGF/XvobyAXqa9aR0fER2BTNitteH8XgZWDPMO7sLV7P//WA==
-#     -----END CERTIFICATE-----
+mqtt:
+  # All MQTT publishes are anonymous, all that is sent is the $name (not the friendly name)
+  # All pubs are defaultly SlumberTek-XXXXXX/number/ or SlumberTek-XXXXXX/sensor/ etc. where the XXXXXX is the last 6 digits of the ESP's MAC address
+  # The  MQTT data goes to an AWS server and only ASC has creditentials to subscribe to the data.
+  id: mqtt_client
+  broker: mqtt.asc.com
+  port: 8883
+  discovery: false
+  enable_on_boot: false
+  reboot_timeout: 0s
+  discovery_retain: false
+  log_topic: null
+  skip_cert_cn_check: true
+  idf_send_async: false
+  certificate_authority: |
+    -----BEGIN CERTIFICATE-----
+    MIIDtzCCAp+gAwIBAgIUFEakDzgjAXiPPIKqREM2ntBCrcQwDQYJKoZIhvcNAQEL
+    BQAwajELMAkGA1UEBhMCVVMxEzARBgNVBAgMCldhc2hpbmd0b24xEDAOBgNVBAcM
+    B1NlYXR0bGUxDDAKBgNVBAoMA0FTQzEQMA4GA1UECwwHTVFUVC1DQTEUMBIGA1UE
+    AwwLQVNDIE1RVFQgQ0EwIBcNMjUwMzI2MDIxMTE1WhgPMjA1MjA4MTAwMjExMTVa
+    MGoxCzAJBgNVBAYTAlVTMRMwEQYDVQQIDApXYXNoaW5ndG9uMRAwDgYDVQQHDAdT
+    ZWF0dGxlMQwwCgYDVQQKDANBU0MxEDAOBgNVBAsMB01RVFQtQ0ExFDASBgNVBAMM
+    C0FTQyBNUVRUIENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsOaq
+    lRpFoOsNUHtSj/sxPtfnpK8JITcnJRd0KlOD6514g6fysgTNw4J+Aq3Vg6L67oGx
+    wE9uxMe+DXBdSn3qb/QB+63t7OWIQNSB9NNorQUfvR7ZA3L9OpRD8I1+fhCDX7rm
+    3U67VuJJYUdApOSOfliP0eSPxRA63yCIEflmDrnoHJHs7mw1gDdXCEEIg5qlrlKT
+    GJes1WhurZpN/4Esyy2eqg5HMlRwpk1+LLkjkdsqFCQf2HUeApil0Dkr5BbRzUyH
+    AcnQYPFCG6uLBTW004bEZ5llhlXMi/hgP50mpGns0Owc8DDssfDjHbVofZ53xe4T
+    kmx7RHGAqAZA2lslbQIDAQABo1MwUTAdBgNVHQ4EFgQUr5X7FnXJkvzTdpdFiQw2
+    eqFJl48wHwYDVR0jBBgwFoAUr5X7FnXJkvzTdpdFiQw2eqFJl48wDwYDVR0TAQH/
+    BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAAlHuYRy08Wuaydn++xXKbYqbKJNY
+    7c4EQzebNhtUF+SxU/z4tlo4ZNDbQiyudXLw7k0ajZ23JVO+NwwA5/CqNOZCqEfm
+    ReTuQDRVsEan+0Us94aAVnfrBq2qk32r5GW+3PJFkeWghAzpys24c2YksMdayx8l
+    89zBR4AYQhxumrTklXcVH4HyWsmWYdvyqtQroT/UmR3jWSj6gY3Bk7YgTUOwlo6z
+    Mzzqbza1E8bawwUJlo1GGREjelMNrouZMqQPFGwjOPUbcVL6fV4LQmnD3KQNMazs
+    SAwGtYIVanPGF/XvobyAXqa9aR0fER2BTNitteH8XgZWDPMO7sLV7P//WA==
+    -----END CERTIFICATE-----
 
 globals:
 - id: full_bed_sensitivity_threshold
@@ -245,7 +256,7 @@ binary_sensor:
   name: Bed Sensor
   id: Bed_binary_trigger
   device_class: occupancy
-  # # retain: false
+  retain: false
 
 text_sensor:
 - platform: template
@@ -253,7 +264,7 @@ text_sensor:
   id: calibration_status_message
   update_interval: never
   icon: mdi:alert-circle-outline
-  # retain: false
+  retain: false
 
 number:
 - platform: template
@@ -268,7 +279,7 @@ number:
   step: 1
   optimistic: true
   restore_value: true
-  # retain: false
+  retain: false
   on_value:
     then:
     - lambda: |-
@@ -286,7 +297,7 @@ number:
   step: 1
   optimistic: true
   restore_value: true
-  # retain: false
+  retain: false
   on_value:
     then:
     - lambda: |-
@@ -305,7 +316,7 @@ number:
   step: 5
   optimistic: true
   restore_value: true
-  # retain: false
+  retain: false
   on_value:
     then:
     - lambda: |-
@@ -326,7 +337,7 @@ number:
   step: 5
   optimistic: true
   restore_value: true
-  # retain: false
+  retain: false
   on_value:
     then:
     - lambda: |-
@@ -346,7 +357,7 @@ number:
   step: 5
   optimistic: true
   restore_value: true
-  # retain: false
+  retain: false
   on_value:
     then:
     - lambda: |-
@@ -375,7 +386,7 @@ number:
   step: 1
   optimistic: true
   restore_value: true
-  # retain: false
+  retain: false
   on_value:
     then:
     - lambda: |-
@@ -394,7 +405,7 @@ number:
   step: 1
   optimistic: true
   restore_value: true
-  # retain: false
+  retain: false
   on_value:
     then:
     - lambda: |-
@@ -414,7 +425,7 @@ number:
   step: 1
   optimistic: true
   restore_value: true
-  # retain: false
+  retain: false
   on_value:
     then:
     - lambda: |-
@@ -434,7 +445,7 @@ number:
   step: 1
   optimistic: true
   restore_value: true
-  # retain: false
+  retain: false
   on_value:
     then:
     - lambda: |-
@@ -453,7 +464,7 @@ number:
   step: 1
   optimistic: true
   restore_value: true
-  # retain: false
+  retain: false
   on_value:
     then:
     - lambda: |-
@@ -472,7 +483,7 @@ number:
   step: 25
   optimistic: true
   restore_value: true
-  # retain: false
+  retain: false
   on_value:
     then:
     - lambda: |-
@@ -489,7 +500,7 @@ sensor:
   icon: mdi:weight-kilogram
   accuracy_decimals: 3
   update_interval: never
-  # retain: false
+  retain: false
   lambda: |-
     return id(filteredSignal);
 
@@ -503,7 +514,7 @@ sensor:
   icon: mdi:bed-empty
   accuracy_decimals: 3
   update_interval: never
-  # retain: false
+  retain: false
   lambda: |-
     return id(dynOffThresholdID);
 
@@ -517,7 +528,7 @@ sensor:
   icon: mdi:bed
   accuracy_decimals: 3
   update_interval: never
-  # retain: false
+  retain: false
   lambda: |-
     return id(dynOnThresholdID);
 
@@ -530,7 +541,7 @@ sensor:
   icon: mdi:bed-empty
   update_interval: never
   accuracy_decimals: 3
-  # retain: false
+  retain: false
   lambda: |-
     return id(empty_bed_limit_g);
 
@@ -543,7 +554,7 @@ sensor:
   icon: mdi:bed
   update_interval: never
   accuracy_decimals: 3
-  # retain: false
+  retain: false
   lambda: |-
     return id(full_bed_limit_g);
 
@@ -556,7 +567,7 @@ sensor:
   entity_category: diagnostic
   accuracy_decimals: 3
   update_interval: never
-  # retain: false
+  retain: false
   lambda: |-
     return id(midpoint_g);
 
@@ -564,12 +575,12 @@ sensor:
   name: WiFi Signal Strength
   id: wifi_signal_db
   update_interval: 5min
-  # retain: false
+  retain: false
 
 - platform: internal_temperature
   name: Internal Temperature
   update_interval: 5min
-  # retain: false
+  retain: false
 
 - platform: template
   name: Reset Counter
@@ -577,7 +588,7 @@ sensor:
   entity_category: diagnostic
   icon: mdi:reload-alert
   accuracy_decimals: 0
-  # retain: false
+  retain: false
 
 - platform: adc
   pin: GPIO0
@@ -597,7 +608,7 @@ switch:
   id: calibration_button
   icon: mdi:scale-balance
   optimistic: true
-  # retain: false
+  retain: false
   on_turn_on:
   - lambda: |-
       id(samples_since_last_cali) = 0;
@@ -614,7 +625,7 @@ switch:
   entity_category: diagnostic
   optimistic: true
   restore_mode: RESTORE_DEFAULT_ON
-  # retain: false
+  retain: false
   turn_on_action:
   - lambda: !lambda id(mqtt_enable) = true;
   turn_off_action:
@@ -895,18 +906,18 @@ interval:
       startUpFlag = false;
 
       // Step 11: Check to enable MQTT 45 seconds after startup
-      //if(currentTime - mqttStartUpTimer > 45000){
-      //  if(id(mqtt_enable) && !id(mqtt_client).is_connected()){
-      //    id(mqtt_client).enable();
-      //    id(mqtt_button).publish_state(id(mqtt_enable));
-      //  }
-      //  if (!id(mqtt_enable) && id(mqtt_client).is_connected()){
-      //    //id(mqtt_client).disable();
-      //    id(mqtt_button).publish_state(id(mqtt_enable));
-      //  }
-      //}
+      if(currentTime - mqttStartUpTimer > 45000){
+        if(id(mqtt_enable) && !id(mqtt_client).is_connected()){
+          id(mqtt_client).enable();
+          id(mqtt_button).publish_state(id(mqtt_enable));
+        }
+        if (!id(mqtt_enable) && id(mqtt_client).is_connected()){
+          id(mqtt_client).disable();
+          id(mqtt_button).publish_state(id(mqtt_enable));
+        }
+      }
 
-- interval: 3s
+- interval: 30min
   then:
     lambda: |-
       int sampleIndex = id(sample_index);  // Access global sampleIndex
@@ -945,10 +956,6 @@ interval:
           // Step 3: Biggest gap, ignoring possible outliers at the top and bottom by removing top and bottom 3 values
           float largestGap = sortedSamples[44] - sortedSamples[3];
 
-          // Store these values for manipulation of midpoint
-          id(midpoint_pressure_max_g) = sortedSamples[44]; 
-          id(midpoint_pressure_min_g) = sortedSamples[3];
-
           // Step 4: Check if the largest gap meets the minimum gap requirement
           //float autoCaliTriggerPercentages[] = {2.0, 1.5, 1.0, 0.75, 0.5}; // 200%, 150%, 100%, 75%, 50%
           float minGap = (id(empty_bed_limit_g) - id(full_bed_limit_g)) * id(auto_cali_triggering_sensitivity)/100.0;
@@ -956,6 +963,10 @@ interval:
             //ESP_LOGD("interval_30min", "Largest gap %.3f is below minGap %.3f. Skipping threshold update.", largestGap, minGap);
             return;  // No significant gap; likely no bed presence data
           }
+
+          // Store these values for manipulation of midpoint
+          id(midpoint_pressure_max_g) = sortedSamples[44]; 
+          id(midpoint_pressure_min_g) = sortedSamples[3];
 
           // Step 5: Calculate midpoint around largest gap and use that to define the spacing of the limit_adjuster_amount
           float newMidpoint = sortedSamples[3] + (largestGap * id(midpoint_adjuster_g)) / 100.0; // largestGap is multiplied by midpoint_adjuster (which is a percent)
@@ -1016,7 +1027,4 @@ script:
       id(sensitivity_base) = (id(empty_bed_limit_g) - id(full_bed_limit_g)) / 10.0; // update 10 steps, 
       //ESP_LOGD("script", "sensitivity_base %.3f.", id(sensitivity_base));
       id(empty_bed_limit_voltage).publish_state(id(empty_bed_limit_g));
-      id(full_bed_limit_voltage).publish_state(id(full_bed_limit_g)); 
-      
-
-    
+      id(full_bed_limit_voltage).publish_state(id(full_bed_limit_g));

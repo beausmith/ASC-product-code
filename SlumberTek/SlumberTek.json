@@ -1,6 +1,6 @@
 {
   "name": "SlumberTek Firmware",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "home_assistant_domain": "esphome",
   "new_install_skip_erase": false,
   "builds": [
@@ -8,8 +8,8 @@
       "chipFamily": "ESP32-C3",
       "ota": {
         "path": "https://raw.githubusercontent.com/AppliedSensorCo/ASC-product-code/main/SlumberTek/slumbertek.ota.bin",
-        "md5": "87eb8031926d4a7134e850590b3d9db2",
-        "summary": "Added new auto-calibration text entity to show when next auto-calibration will happen, new auto-calibration interval slider (now can turn off if set to '0'), MQTT moved to mqtt.asc.com, disabled MQTT retaining messages.",
+        "md5": "7e4cfaaddfcc17b2622a10970fa92d3c",
+        "summary": "Quick overview video for 0.3.0 (https://youtu.be/00eSYyqT7IA). I found a big mistake in the auto-calibration, added more control over over auto-cal. You can now rollback to 0.2.3 in Easy Mode install instructions at docs.asc.com.",
         "release_url": "https://github.com/AppliedSensorCo/ASC-product-code/blob/main/SlumberTek/SlumberTek_change_log.txt"        
       },
       "parts": [

@@ -1,11 +1,15 @@
 Go to the ASC Discord channel if you have any questions about the changes - https://discord.gg/cB9P6NmYJg
 
-Ver 0.2.4 (in progress)
- - Upper and lower threshold sensitivities, Removed the out of bed sensitivity mode
+Ver 0.3.1 (in progress)
+ -
+
+Ver 0.3.0 (release 5/1/25)
+ - Separated empty bed and full bed threshold sensitivities
+ - Removed the "Out of bed sensitivity" mode, you can now achieve this by increasing "Empty Bed Detection Sensitivity" slider above 0 
  - Added filtering levels to help with people who have extra noisy signal
  - Amount of signal change required to trigger a auto-calibration is now tunable through a slider
  - Fixed inconsistencies between using the phrase Upper and Lower instead of "empty bed" and "full bed", respectively
- - The auto-calibration is based on estimated target threshold, how that estimated target threshold is calculated is now adjustable through new sliders
+ - The auto-calibration is based on estimated percentages of Pressure Voltage signal range, the percentages is now adjustable through new sliders
  - Removed direct control over empty and full bed threshold, now they are adjusted relative to the estimated midpoint from auto calibration
 
 Ver 0.2.3 (release: 4/28/25)
