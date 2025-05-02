@@ -1,7 +1,7 @@
 Go to the ASC Discord channel if you have any questions about the changes - https://discord.gg/cB9P6NmYJg
 
 Ver 0.3.1 (in progress)
- -
+ - Add button to upgrade firmware manually
 
 Ver 0.3.0 (release 5/1/25)
  - Separated empty bed and full bed threshold sensitivities
