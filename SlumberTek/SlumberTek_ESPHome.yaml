@@ -254,7 +254,7 @@ globals:
 binary_sensor:
 - platform: template
   name: Bed Sensor
-  id: Bed_binary_trigger
+  id: bed_binary_trigger
   device_class: occupancy
   retain: false
 
@@ -719,7 +719,7 @@ interval:
         id(visible_midpoint).publish_state(id(midpoint_g));
         id(filter_change_number).publish_state(id(filter_amount));
         id(auto_cali_trigger_number).publish_state(id(auto_cali_triggering_sensitivity));
-        id(Bed_binary_trigger).publish_state(id(sensorBoolValue));
+        id(bed_binary_trigger).publish_state(id(sensorBoolValue));
         id(empty_bed_limit_voltage_adjuster).publish_state(id(empty_bed_adjuster_g));
         id(full_bed_limit_voltage_adjuster).publish_state(id(full_bed_adjuster_g));
         id(update_interval_number).publish_state(id(volt_update_interval));
@@ -805,7 +805,7 @@ interval:
           calibrationTimer = currentTime;
         }
       } else {
-        if (id(Bed_binary_trigger).state) {
+        if (id(bed_binary_trigger).state) {
           // Immediate "off" if low-pass signal exceeds the dynamic empty bed threshold
           if (lowPassOutput > dynamicEmptyBedThreshold) {
             if (!validatingOffTransition) {
@@ -815,7 +815,7 @@ interval:
             } else if (millis() - offValidationStartTime >= offValidationDuration) {
               // Timer expired: Turn "off"
               id(sensorBoolValue) = false;
-              id(Bed_binary_trigger).publish_state(id(sensorBoolValue));
+              id(bed_binary_trigger).publish_state(id(sensorBoolValue));
               offValidationStartTime = 0;
               validatingOffTransition = false;
               lastEventTime = millis();
@@ -835,7 +835,7 @@ interval:
             } else if (millis() - onValidationStartTime >= onValidationDuration) {
               // Timer expired: Turn "on"
               id(sensorBoolValue) = true;
-              id(Bed_binary_trigger).publish_state(id(sensorBoolValue));
+              id(bed_binary_trigger).publish_state(id(sensorBoolValue));
               onValidationStartTime = 0;
               validatingOnTransition = false;
               lastEventTime = millis();
